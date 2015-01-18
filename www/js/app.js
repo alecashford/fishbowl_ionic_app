@@ -85,7 +85,24 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
         }
       }
     })
-
+  .state('tab.my-groups', {
+      url: '/my-groups',
+      views: {
+        'tab-mygroups': {
+          templateUrl: 'templates/my-groups.html',
+          controller: 'MyGroupsCtrl'
+        }
+      }
+    })
+  .state('tab.new-group', {
+      url: '/new-group',
+      views: {
+        'tab-mygroups': {
+          templateUrl: 'templates/new-group.html',
+          controller: 'NewGroupCtrl'
+        }
+      }
+    })
   .state('tab.account', {
     url: '/account',
     views: {

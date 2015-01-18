@@ -1,17 +1,33 @@
 angular.module('starter.services', [])
 
 .factory('MyFeed', function($http) {
+  var totalFeed;
   return {
-    populate: function() {
+    populateFeed: function() {
       return $http({
         method: 'POST',
         url: 'http://127.0.0.1:9393/',
-        data: {action: 'populate_feed', payload: {user_id: 1}} // Change from hardcoded values
-      })
+        data: {
+          action: 'populate_feed',
+          payload: {user_id: 1}
+        }
+      }).then(function(response) {
+        totalFeed = response.data;
+        return totalFeed;
+      });
     },
-    showAll: undefined
+    getPost : function(id) {
+      for (i = 0; i < totalFeed.length; i++) {
+        if (totalFeed[i].id == id) {
+          return totalFeed[i];
+        }
+      }
+      return null;
+    }
   }
 })
+
+
 
 .factory('Comments', function($http) {
   return {
@@ -22,6 +38,12 @@ angular.module('starter.services', [])
         data: {action: 'get_comments', payload: payload}
       })
     }
+  }
+})
+
+.factory('MyGroups', function($http) {
+  return {
+
   }
 })
 

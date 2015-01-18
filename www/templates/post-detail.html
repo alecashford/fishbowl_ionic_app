@@ -6,8 +6,8 @@
 -->
 <ion-view view-title="Post">
   <ion-content class="padding">
-    <p>{{title}}</p>
-    <p>{{content}}</p>
+    <p>{{post.title}}</p>
+    <p>{{post.content}}</p>
     <div ng-repeat="comment in comments">
       <p>{{comment.score}}</p>
       <p>{{comment.content}}</p>

@@ -1,0 +1,17 @@
+<ion-view view-title="Create New Group">
+  <ion-content class="padding">
+		<form ng-submit="addGroup(displayName, memberEmail)">
+			Group Name:
+			<label class="item item-input">
+				<input type="text" ng-model="displayName" placeholder="e.g. Willamette University">
+			</label>
+			Member Email:
+			<label class="item item-input">
+				<input type="text" ng-model="memberEmail" placeholder="Optional. E.g. you@willamette.edu">
+			</label>
+			<div class="padding">
+      	<button type="submit" class="button button-block button-positive">Create Group</button>
+      </div>
+		</form>
+  </ion-content>
+</ion-view>
