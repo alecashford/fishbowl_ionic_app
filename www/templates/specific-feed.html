@@ -1,0 +1,15 @@
+<ion-view view-title="{{title}}">
+    <ion-nav-buttons side="right">
+      <button class="button" ui-sref="tab.new-group" ng-show="admin">
+        Admin
+      </button>
+    </ion-nav-buttons>
+  <ion-content>
+    <ion-list>
+      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="post in specificFeed" type="item-text-wrap" href="#/tab/post/{{post.id}}">
+        <h2>{{post.score}}</h2>
+        <h2>{{post.title}}</h2>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

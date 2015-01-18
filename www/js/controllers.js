@@ -11,8 +11,6 @@ angular.module('starter.controllers', [])
   })
 }])
 
-// We need an index. k = position, v = id
-
 .controller('PostDetailCtrl', ['$scope', '$stateParams', 'MyFeed', 'Comments', function($scope, $stateParams, MyFeed, Comments) {
   // console.log($stateParams.postId)
   $scope.post = MyFeed.getPost($stateParams.postId)
@@ -20,31 +18,25 @@ angular.module('starter.controllers', [])
   Comments.populate_comments({post_id: ($stateParams.postId)}).success(function(data) {
     $scope.comments = data;
   })
-
-  // $http({
-  //       method: 'POST',
-  //       url: 'http://127.0.0.1:9393/',
-  //       data: {action: 'get_comments', payload: {post_id: ($stateParams.postId - 1)}}
-  //     }).success(function(data) {
-  //       $scope.comments = data
-  //       debugger
-  //     })
 }])
 
 .controller('FriendsCtrl', function($scope, Friends) {
   $scope.friends = Friends.all();
 })
 
-.controller('MyGroupsCtrl', function($scope, $http) {
-    // $http({
-    //     method: 'POST',
-    //     url: 'http://127.0.0.1:9393/',
-    //     data: {action: 'my_groups', payload: {display_name: $scope.displayName,
-    //                                                 member_email: $scope.memberEmail,
-    //                                                 user_id: 1}} //change from hardcoded
-    //   }).success(function(data) {
-    //     $scope.comments = data
-    //   })
+.controller('MyGroupsCtrl', function($scope, $http, MyGroups) {
+  MyGroups.populateGroups().then(function(response) {
+    console.log(response)
+    $scope.allGroups = response;
+    $scope.groupsIOwn = response.owned;
+    $scope.groupsImPartOf = response.not_owned;
+  });
+})
+
+.controller('SpecificFeedCtrl', function($scope, $http, $stateParams, MyGroups, MyFeed) {
+  $scope.specificFeed = MyFeed.getSpecificFeed($stateParams.groupId)
+  $scope.title = MyGroups.getGroupName($stateParams.groupId);
+  $scope.admin = MyGroups.getOwnershipStatus($stateParams.groupId);
 })
 
 .controller('NewGroupCtrl', function($scope, $http, $location) {
@@ -63,8 +55,8 @@ angular.module('starter.controllers', [])
   }
 })
 
-.controller('FriendDetailCtrl', function($scope, $stateParams, Friends) {
-  $scope.friend = Friends.get($stateParams.friendId);
+.controller('AdminCtrl', function($scope, $http, $location) {
+  $scope.admin
 })
 
 .controller('AccountCtrl', function($scope) {

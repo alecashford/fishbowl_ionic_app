@@ -94,6 +94,24 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
         }
       }
     })
+  .state('tab.specific-feed', {
+      url: '/feed/:groupId',
+      views: {
+        'tab-mygroups': {
+          templateUrl: 'templates/specific-feed.html',
+          controller: 'SpecificFeedCtrl'
+        }
+      }
+    })
+  .state('tab.admin', {
+      url: '/admin/:groupId',
+      views: {
+        'tab-mygroups': {
+          templateUrl: 'templates/admin.html',
+          controller: 'AdminCtrl'
+        }
+      }
+    })
   .state('tab.new-group', {
       url: '/new-group',
       views: {

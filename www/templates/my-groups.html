@@ -5,6 +5,21 @@
       </button>
     </ion-nav-buttons>
   <ion-content class="padding">
-  	
+  	<div ng-show="groupsIOwn">
+  		Moderator Of:
+  		<ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="group in groupsIOwn" type="item-	text-wrap" href="#/tab/feed/{{group.id}}">
+  			<p>
+  				{{group.display_name}}
+  			</p>
+    	</ion-item>
+    </div>
+    <div>
+  		Member Of:
+  		<ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="group in groupsImPartOf" type="item-	text-wrap" href="#/tab/feed/{{group.id}}">
+  			<p>
+  				{{group.display_name}}
+  			</p>
+    	</ion-item>
+  	</div>
   </ion-content>
 </ion-view>
