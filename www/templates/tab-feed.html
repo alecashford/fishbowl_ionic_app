@@ -1,4 +1,9 @@
 <ion-view view-title="Feed">
+  <ion-nav-buttons side="right">
+    <button class="button" ui-sref="tab.new-post">
+      New
+    </button>
+  </ion-nav-buttons>
   <ion-content>
     <ion-list>
       <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="post in feedData" type="item-text-wrap" href="#/tab/post/{{post.id}}">

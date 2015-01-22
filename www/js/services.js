@@ -67,23 +67,33 @@ angular.module('starter.services', [])
       });
     },
     getGroupName: function(id) {
-      var flattened = [].concat.apply(allGroups['owned'], allGroups['not_owned'])
-      for (var i = 0; i < flattened.length; i++) {
-        console.log(flattened[i].display_name)
-        if (flattened[i].id == id) {
-          return flattened[i].display_name;
+      for (var i = 0; i < allGroups.length; i++) {
+        console.log(allGroups[i].display_name)
+        if (allGroups[i].id == id) {
+          return allGroups[i].display_name;
         }
       }
       return null;
     },
-    getOwnershipStatus: function(id) {
-      for (var i = 0; i < allGroups.owned.length; i++) {
-        if (allGroups.owned[i].id == id) {
+    getOwnershipStatus: function(post_id, user_id) {
+      for (var i = 0; i < allGroups.length; i++) {
+        if (allGroups[i].id == post_id && allGroups[i].creator_id == user_id) {
           return true;
         }
       }
       return false;
     }
+  }
+})
+
+.directive('treeRenderer', function() {
+  return {
+    restrict: 'E',
+    template: '{{data.content}}' +
+              '<ul>' +
+              '  <li ng-repeat="data in data.nodes"><tree-renderer></tree-renderer></li>' +
+              '</ul>'
+
   }
 })
 

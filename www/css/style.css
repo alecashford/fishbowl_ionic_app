@@ -1,1 +1,43 @@
 /* Empty. Add your own CSS if you like */
+
+li {
+    margin-left: 20px;
+}
+
+.parent_comment {
+	padding-right: 0px;
+	padding-left: 16px;
+	padding-top: 16px;
+	padding-bottom: 16px;
+}
+
+.sub_list:last-child {
+margin-bottom: 0px;
+}
+.sub_list {
+	position: relative;
+	padding-top: 1px;
+	padding-bottom: 1px;
+	padding-left: 0;
+	margin-top: 16px;
+}
+
+.sub_list:empty {
+	margin-top: 0px;
+}
+
+.sub_item {
+	border-color: #ddd;
+	background-color: #fff;
+	color: #444;
+	position: relative;
+	z-index: 2;
+	display: block;
+	margin: -1px;
+	border-width: 1px;
+	border-style: solid;
+	font-size: 16px;
+	padding-left: 16px;
+	padding-top: 16px;
+	padding-bottom: 16px;
+}

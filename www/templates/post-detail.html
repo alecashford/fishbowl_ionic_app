@@ -8,9 +8,30 @@
   <ion-content class="padding">
     <p>{{post.title}}</p>
     <p>{{post.content}}</p>
-    <div ng-repeat="comment in comments">
+<!--     <div ng-repeat="comment in comments">
       <p>{{comment.score}}</p>
       <p>{{comment.content}}</p>
-    </div>
+    </div> -->
+    <script type="text/ng-template" id="tree_renderer.html">
+      {{data.content}}
+      <button ng-click="showReplyField = !showReplyField" ng-hide="showReplyField">Reply</button>
+      <div ng-show="showReplyField">
+        <form ng-submit="addComment(commentText, data)">
+          <label class="item item-input">
+            <input type="text" ng-model="commentText" placeholder="Write reply here...">
+          </label>
+          <div class="padding">
+            <button type="submit" ng-click="showReplyField = !showReplyField" class="button button-block button-positive">Reply</button>
+          </div>
+        </form>
+      </div>
+
+      <ul class="sub_list"><li class="sub_item" ng-repeat="data in data.nodes" ng-include="'tree_renderer.html'"></li></ul>
+    </script>
+
+    <ul class="list">
+      <li class="item parent_comment" ng-repeat="data in tree" ng-include="'tree_renderer.html'"></li>
+    </ul>
+
   </ion-content>
 </ion-view>
