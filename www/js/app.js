@@ -66,6 +66,15 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
         }
       }
     })
+    .state('tab.new-post', {
+      url: '/post/new',
+      views: {
+        'tab-feed': {
+          templateUrl: 'templates/new-post.html',
+          controller: 'NewPostCtrl'
+        }
+      }
+    })
 
   .state('tab.friends', {
       url: '/friends',
